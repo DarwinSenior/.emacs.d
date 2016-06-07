@@ -2,5 +2,5 @@
 (helm-mode 1)
 (require-package 'projectile)
 (projectile-global-mode)
-(helm-projectile-find)
-
+(require-package 'helm-projectile)
+(helm-projectile-on)

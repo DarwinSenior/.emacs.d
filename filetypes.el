@@ -13,7 +13,7 @@
                (set jedi:environment-root "jedi")
                (set jedi:environment-virtualenv
                     (append python-environment-virtualenv
-                            '("--python" "/usr/local/bin/python3")))))
+                            '("--python" "/usr/bin/python3")))))
 (add-hook 'python-mode-hook 'run-python-internal)
 
 (require-package 'json-mode)
