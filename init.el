@@ -39,6 +39,7 @@
 (load-user-file "passive.el")
 (load-user-file "evil.el")
 (load-user-file "filetypes.el")
+(load-user-file "helm.el")
 (load-user-file "spell.el")
 (load-user-file "orgmode.el")
 
