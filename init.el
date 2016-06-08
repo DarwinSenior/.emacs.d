@@ -40,8 +40,11 @@
 (load-user-file "evil.el")
 (load-user-file "filetypes.el")
 (load-user-file "helm.el")
+(load-user-file "magit.el")
 (load-user-file "spell.el")
 (load-user-file "orgmode.el")
+
+(global-set-key (kbd "ESC") 'keyboard-escape-quit)
 
 (require-package 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -53,11 +56,9 @@
 (require-package 'yasnippet)
 (yas-global-mode 1)
 ;; redefine enter instead of tab for expansion
-(define-key yas-minor-mode-map (kbd "RET") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "S-RET") 'yas-expand)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 
-
-(require-package 'magit)
 
 ; set up terminal
 (setq system-uses-info nil)

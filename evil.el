@@ -94,13 +94,6 @@
   (transpose-lines 1)
   (previous-line 1))
 
-(defun save-file ()
-  "save if it is a file else do nothing"
-  (interactive)
-  (when (buffer-file-name)
-      (save-buffer)))
-
-
 (require-package 'avy)
 (defface avy-lead-face-0
   '((t (:foreground "red" :background nil)))
@@ -124,11 +117,5 @@
 (nmap "] e" 'move-line-down)
 (nmap "C-l" 'evil-ex-nohighlight)
 (nmap "SPC w" 'avy-goto-word-0)
-(nmap "SPC b i" (lambda ()
-		      (interactive)
-		      (save-file)
-		      (helm-buffers-list)))
-(nmap "SPC f i" (lambda ()
-		      (interactive)
-		      (save-file)
-		      (call-interactively 'helm-find)))
+
+
