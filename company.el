@@ -16,4 +16,3 @@
 (with-eval-after-load 'company
                       (define-key company-active-map (kbd "C-w") nil))
 
-

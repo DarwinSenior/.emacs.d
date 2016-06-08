@@ -18,4 +18,8 @@
 (setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
 (add-hook 'evil-after-load-hook 'nlinum-relative-setup-evil)                    ;; setup for evil
 
-
+(global-whitespace-newline-mode)
+(setq whitespace-style '(newline newline-mark))
+(setq whitespace-display-mappings
+      '((newline-mark 10 [8617 10])))
+(set-face-background 'whitespace-newline nil)
