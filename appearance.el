@@ -17,6 +17,10 @@
 (setq nlinum-relative-current-symbol "")      ;; or "" for display current line number
 (setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
 (add-hook 'evil-after-load-hook 'nlinum-relative-setup-evil)                    ;; setup for evil
+(add-hook 'evil-operator-state-entry-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-on))))
+(add-hook 'evil-operator-state-exit-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-off))))
 
 (global-whitespace-newline-mode)
 (setq whitespace-style '(newline newline-mark))

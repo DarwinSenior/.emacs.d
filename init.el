@@ -69,9 +69,11 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+(add-hook 'term-mode-hook (lambda () (setq yas-dont-activate t)))
+(nmap "SPC s h" (lambda () (interactive) 
+		  (ansi-term "/bin/zsh")))
 
 (require-package 'writeroom-mode)
-
 (require-package 'restclient)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
