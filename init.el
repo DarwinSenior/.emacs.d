@@ -38,18 +38,13 @@
 (load-user-file "company.el")
 (load-user-file "passive.el")
 (load-user-file "evil.el")
-(load-user-file "filetypes.el")
-(load-user-file "helm.el")
-(load-user-file "magit.el")
-(load-user-file "spell.el")
 (load-user-file "orgmode.el")
+(load-user-file "filetypes.el")
+(load-user-file "magit.el")
+(load-user-file "helm.el")
+(load-user-file "spell.el")
 
-(global-set-key (kbd "ESC") 'keyboard-escape-quit)
-
-(require-package 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;; (require-package 'smart-tabs-mode)
+; (require-package 'smart-tabs-mode)
 
 
 
@@ -70,22 +65,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 (add-hook 'term-mode-hook (lambda () (setq yas-dont-activate t)))
-(nmap "SPC s h" (lambda () (interactive) 
-		  (ansi-term "/bin/zsh")))
+(nmap "SPC s h" (lambda () (interactive)
+          (ansi-term "/bin/zsh")))
 
 (require-package 'writeroom-mode)
 (require-package 'restclient)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (restclient writeroom-mode magit yasnippet rainbow-delimiters ob-ipython exec-path-from-shell org-bullets helm-projectile whitespace-cleanup-mode vimrc-mode smartparens python-mode projectile nlinum-relative json-mode highlight-numbers helm golden-ratio evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu el-get company-quickhelp company-jedi color-theme-sanityinc-tomorrow avy airline-themes))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+

@@ -22,5 +22,7 @@
   (nmaplocal "SPC o" 'org-open-at-point)
   (nmaplocal "SPC e x" 'org-export)
   (nmaplocal "C-x" 'org-babel-execute-src-block)
+  (nmaplocal "[ l" 'org-previous-link)
+  (nmaplocal "] l" 'org-next-link)
   )
 (add-hook 'org-mode-hook 'evil-org-local-binding)

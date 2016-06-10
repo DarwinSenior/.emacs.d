@@ -1,5 +1,8 @@
 (savehist-mode 1)
 
+(require-package 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 (require-package 'whitespace-cleanup-mode)
 (global-whitespace-cleanup-mode)
 
