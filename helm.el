@@ -9,10 +9,19 @@
 (setq helm-autoresize-min-height 30)
 
 (defun save-file ()
-  "save if it is a file else do nothing"
+  "Save the current buffer when it is actually a buffer"
   (interactive)
   (when (buffer-file-name)
     (save-buffer)))
+
+(defun helm-backspace ()
+  "Forward to `backward-delete-char'.
+On error (read-only), quit without selecting."
+  (interactive)
+  (condition-case nil
+      (backward-delete-char 1)
+    (error
+     (helm-keyboard-quit))))
 
 (nmap "SPC f i" 'helm-projectile)
 (nmap "SPC b i" 'helm-buffers-list)
@@ -40,4 +49,5 @@
 (define-key esc-map (kbd "<ESC><ESC>") nil)
 (hmap "ESC" 'helm-keyboard-quit)
 (hmap "TAB" 'helm-next-line)
+(hmap "DEL" 'helm-backspace)
 
