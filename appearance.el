@@ -6,7 +6,7 @@
 (require-package 'color-theme-sanityinc-tomorrow)
 (load-theme 'airline-molokai t)
 (load-theme 'sanityinc-tomorrow-night t)
-(set-default-font "Fantasque Sans Mono-18")
+(set-default-font "Fantasque Sans Mono-21")
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -22,8 +22,8 @@
 (add-hook 'evil-operator-state-exit-hook
 	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-off))))
 
-(global-whitespace-newline-mode)
-(setq whitespace-style '(newline newline-mark))
-(setq whitespace-display-mappings
-      '((newline-mark 10 [8617 10])))
-(set-face-background 'whitespace-newline nil)
+;; (global-whitespace-newline-mode)
+;; (setq whitespace-style '(newline newline-mark))
+;; (setq whitespace-display-mappings
+;;       '((newline-mark 10 [8617 10])))
+;; (set-face-background 'whitespace-newline nil)
