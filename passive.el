@@ -21,7 +21,7 @@
                  select-window-5)))
 
 (require-package 'smartparens)
-(smartparens-global-strict-mode t)
+(smartparens-global-mode t)
 (show-paren-mode t)
 (require 'smartparens-config)
 (setq show-paren-delay 0)

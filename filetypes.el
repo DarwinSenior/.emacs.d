@@ -20,6 +20,11 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 
 (require-package 'web-mode)
+(require-package 'emmet-mode)
+(require-package 'company-web)
+(require 'company-web-html)
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook 'emmet-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -29,6 +34,18 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (setq web-mode-enable-current-element-highlight t)
-;; (require-package 'comany-web-html)
-;; (require-package 'company-web-jade)
-;; (require-package 'company-web-slim)
+
+(require-package 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-hook 'js2-mode-hook (lambda ()
+			   (tern-mode t)
+			   (add-to-list (make-local-variable 'company-backends)
+					'company-tern)))
+
+(defun web-mode-binding ()
+  (nmaplocal "RET" 'emmet-expand-line))
+
+(require-package 'restclient)
+(add-to-list 'auto-mode-alist '("\\.http?\\'" . restclient-mode))
+
