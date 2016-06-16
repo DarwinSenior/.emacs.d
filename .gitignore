@@ -3,3 +3,6 @@ elpa
 auto-save-list
 /projectile-bookmarks.eld
 /projectile.cache
+/irony/bin/irony-server
+/network-security.data
+/speed-type/1080.txt

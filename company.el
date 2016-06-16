@@ -7,8 +7,8 @@
       '(
 	(company-files
 	company-keywords
-	company-yasnippet)
-	(company-dabbrev-code
+	company-yasnippet
+	company-dabbrev-code
 	company-capf)))
 
 (require-package 'company-quickhelp)
