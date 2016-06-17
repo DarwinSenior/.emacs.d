@@ -1,4 +1,6 @@
 (savehist-mode 1)
+(require-package 'auto-package-update)
+(auto-package-update-maybe)
 
 (require-package 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
