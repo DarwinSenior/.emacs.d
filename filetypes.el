@@ -74,3 +74,4 @@
 (auto-format 'c++-mode-hook 'clang-format-buffer)
 (auto-format 'c-mode-hook 'clang-format-buffer)
 (auto-format 'objc-mode-hook 'clang-format-buffer)
+(setq-default c-basic-offset 4)
