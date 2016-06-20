@@ -5,16 +5,9 @@
   (define-key magit-mode-map (kbd keybinding) action))
 
 (nmap "SPC m g" 'magit-status)
-(eval-after-load 'magit-mode-map
-  '(progn
-    (mg-map "+" 'magit-stage)
-    (mg-map "-" 'magit-unstage)
-    (mg-map "[" 'magit-section-backward)
-    (mg-map "]" 'magit-section-forward)))
+
 
 ;; I wish I could quit for git commands
-
-; (message (prin1-to-string (assoc 'w '((a . b) (c . d) (r . x) (s . y) (r . z)))))
 
 ; (defun magit-git-command (args directory)
 ;   "Execute a Git subcommand asynchronously, displaying the output.

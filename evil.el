@@ -104,9 +104,8 @@
 (defface avy-lead-face
   '((t (:foreground "blue" :background nil)))
   "Face used for matched leading chars.")
-;; (defun nmap (keys action)
-;;   (key-chord-define evil-normal-state-map (kbd keys) action))
 
+(fset 'autoformat-action (lambda () (interactive) (message "filetype has not formatting setup yet")))
 
 (nmap "Q" 'call-last-kbd-macro)
 (nmap "J" (lambda () (interactive) (forward-line 5)))
@@ -117,5 +116,6 @@
 (nmap "] e" 'move-line-down)
 (nmap "C-l" 'evil-ex-nohighlight)
 (nmap "SPC w" 'avy-goto-word-0)
+(nmap "SPC SPC SPC" 'autoformat-action)
 
 
