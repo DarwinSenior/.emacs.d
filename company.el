@@ -20,3 +20,4 @@
 
 (require-package 'flycheck)
 (global-flycheck-mode)
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
