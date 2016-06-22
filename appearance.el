@@ -22,6 +22,13 @@
 (add-hook 'evil-operator-state-exit-hook
 	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-off))))
 
+(require-package 'delight)
+(delight '((helm-mode nil helm)
+	   (yas-minor-mode nil yasnippet)
+	   (undo-tree-mode nil undo-tree)
+	   (golden-ratio-mode nil golden-ratio)
+	   (company-mode nil company)))
+
 ;; (global-whitespace-newline-mode)
 ;; (setq whitespace-style '(newline newline-mark))
 ;; (setq whitespace-display-mappings
