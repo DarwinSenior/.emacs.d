@@ -2,6 +2,8 @@
 (require-package 'auto-package-update)
 (auto-package-update-maybe)
 
+(setq initial-scratch-message "")
+
 (require-package 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
