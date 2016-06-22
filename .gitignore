@@ -5,4 +5,6 @@ auto-save-list
 /projectile.cache
 /irony/bin/irony-server
 /network-security.data
-/speed-type/1080.txt
+/speed-type/
+/.python-environments/
+/.last-package-update-day
