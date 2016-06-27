@@ -43,7 +43,6 @@
 (load-user-file "magit.el")
 (load-user-file "orgmode.el")
 (load-user-file "spell.el")
-(load-user-file "hippies.el")
 
 (require-package 'yasnippet)
 (yas-global-mode 1)
