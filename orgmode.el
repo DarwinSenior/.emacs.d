@@ -26,8 +26,20 @@
   (nmaplocal "] l" 'org-next-link)
   (nmaplocal "SPC c" 'org-capture)
   )
+(defun org-toggle-all-latex-fragments ()
+  "Toggle all the latex fragments."
+  (when (eq major-mode 'org-mode)
+   (org-toggle-latex-fragment '(16))))
+
+(add-hook 'org-mode-hook (lambda ()
+			   (add-hook 'evil-normal-state-entry-hook 'org-toggle-all-latex-fragments)
+			   (add-hook 'evil-normal-state-exit-hook 'org-toggle-all-latex-fragments)))
+
 (add-hook 'org-mode-hook 'evil-org-local-binding)
 (setq org-export-coding-system 'utf-8)
+
+(require-package 'ox-reveal)
+(setq org-reveal-root "https://cdn.jsdelivr.net/reveal.js/3.0.0/")
 
 (require-package 'calfw)
 (require 'calfw-cal)
