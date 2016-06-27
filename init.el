@@ -1,5 +1,6 @@
 (setq package-archives
   '(("melpa" . "http://melpa.org/packages/")
+    ("org" . "http://orgmode.org/elpa/")
     ("gnu" . "http://elpa.gnu.org/packages/")
     ("marmalade" . "http://marmalade-repo.org/packages/")))
 (require 'package)
@@ -28,31 +29,28 @@
          user-init-directory)
         (t "~/.emacs.d/")))
 
-
 (defun load-user-file (file)
   (interactive "f")
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file user-init-dir)))
 
+(load-user-file "evil.el")
+(load-user-file "passive.el")
 (load-user-file "appearance.el")
 (load-user-file "company.el")
-(load-user-file "passive.el")
-(load-user-file "evil.el")
-(load-user-file "orgmode.el")
+(load-user-file "helm.el")
 (load-user-file "filetypes.el")
 (load-user-file "magit.el")
-(load-user-file "helm.el")
+(load-user-file "orgmode.el")
 (load-user-file "spell.el")
-
-; (require-package 'smart-tabs-mode)
-
-
+(load-user-file "hippies.el")
 
 (require-package 'yasnippet)
 (yas-global-mode 1)
 ;; redefine enter instead of tab for expansion
-(define-key yas-minor-mode-map (kbd "S-RET") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "<C-return>") 'yas-expand)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
 
 
 ; set up terminal
@@ -69,5 +67,4 @@
           (ansi-term "/bin/zsh")))
 
 (require-package 'writeroom-mode)
-(require-package 'restclient)
 
