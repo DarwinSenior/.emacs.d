@@ -21,3 +21,6 @@
 (require-package 'flycheck)
 (global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
+(nmap "[ s" 'flycheck-previous-error)
+(nmap "] s" 'flycheck-next-error)
+
