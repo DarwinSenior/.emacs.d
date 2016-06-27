@@ -60,6 +60,11 @@
   "local mapping"
   (define-key evil-normal-state-local-map (kbd keybinding) action))
 
+(defun add-hook-local (hook mode action)
+  "bind the hook only for local mode"
+  (add-hook hook
+	    (lambda () (when (bound-and-true-p mode) (action)))))
+
 (defmacro retain-pos-do (&rest actions)
   (let ((oldpos (point)))
     (progn actions)
@@ -96,13 +101,16 @@
 
 (require-package 'avy)
 (defface avy-lead-face-0
-  '((t (:foreground "red" :background nil)))
+  '((t (:foreground "black" :background "white")))
   "Face used for first non-terminating leading chars.")
 (defface avy-lead-face-1
-  '((t (:foreground "blue" :background nil)))
+  '((t (:foreground "black" :background "white")))
+  "Face used for matched leading chars.")
+(defface avy-lead-face-2
+  '((t (:foreground "black" :background "white")))
   "Face used for matched leading chars.")
 (defface avy-lead-face
-  '((t (:foreground "blue" :background nil)))
+  '((t (:foreground "black" :background "white")))
   "Face used for matched leading chars.")
 
 (fset 'autoformat-action (lambda () (interactive) (message "filetype has not formatting setup yet")))
