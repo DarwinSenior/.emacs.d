@@ -23,7 +23,7 @@
 	       (set jedi:environment-root "jedi")
                (set jedi:environment-virtualenv
                     (append python-environment-virtualenv
-                            '("--python" "/usr/bin/python3")))))
+                            '("--python" "/home/darwinsenior/.linuxbrew/bin/python3")))))
 (auto-complete 'python-mode-hook 'company-jedi)
 (auto-format 'python-mode-hook 'py-autopep8-buffer)
 (add-hook 'python-mode-hook 'run-python-internal)
@@ -95,3 +95,6 @@
 (add-hook 'haskell-mode-hook (lambda ()
 			       (flycheck-select-checker 'stack)
 			       (flycheck-mode)))
+
+(require-package 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
