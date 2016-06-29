@@ -7,6 +7,7 @@
   (exec-path-from-shell-initialize))
 
 (require-package 'ob-ipython)
+(add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 
 (setq org-confirm-babel-evaluate nil)
 (with-eval-after-load 'org
@@ -26,14 +27,16 @@
   (nmaplocal "] l" 'org-next-link)
   (nmaplocal "SPC c" 'org-capture)
   )
-(defun org-toggle-all-latex-fragments ()
+
+
+(defun org-preview-all-latex-fragments ()
   "Toggle all the latex fragments."
-  (when (eq major-mode 'org-mode)
-   (org-toggle-latex-fragment '(16))))
+     (org-toggle-latex-fragment '(16)))
+
 
 (add-hook 'org-mode-hook (lambda ()
-			   (add-hook 'evil-normal-state-entry-hook 'org-toggle-all-latex-fragments)
-			   (add-hook 'evil-normal-state-exit-hook 'org-toggle-all-latex-fragments)))
+			   (add-hook 'evil-normal-state-entry-hook 'org-preview-all-latex-fragments nil t)
+			   (add-hook 'evil-normal-state-exit-hook 'org-remove-latex-fragment-image-overlays nil t)))
 
 (add-hook 'org-mode-hook 'evil-org-local-binding)
 (setq org-export-coding-system 'utf-8)
