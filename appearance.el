@@ -25,6 +25,18 @@
 	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-on))))
 (add-hook 'evil-operator-state-exit-hook
 	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-off))))
+(add-hook 'evil-normal-state-entry-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-on))))
+(add-hook 'evil-normal-state-exit-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-off))))
+(add-hook 'evil-visual-state-entry-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-on))))
+(add-hook 'evil-visual-state-exit-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-off))))
+(add-hook 'evil-insert-state-entry-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-off))))
+(add-hook 'evil-insert-state-exit-hook
+	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-on))))
 
 
 (require-package 'delight)
