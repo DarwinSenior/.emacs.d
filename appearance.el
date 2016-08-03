@@ -5,7 +5,7 @@
 ;; theme and all that stuff
 (require-package 'color-theme-sanityinc-tomorrow)
 (load-theme 'sanityinc-tomorrow-night t)
-(set-default-font "Fantasque Sans Mono-14")
+(set-default-font "FantasqueSansMonoNerdFont-14")
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
