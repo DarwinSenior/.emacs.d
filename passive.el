@@ -34,3 +34,4 @@
 (with-eval-after-load
   'evil
   (require-package 'evil-anzu))
+(exec-path-from-shell-initialize)

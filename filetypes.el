@@ -98,3 +98,14 @@
 
 (require-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+(require-package 'rust-mode)
+(require-package 'company-racer)
+(require-package 'flycheck-rust)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(auto-complete 'rust-mode-hook 'company-racer)
+
+(provide 'filetypes)
+;;; filetypes ends here
