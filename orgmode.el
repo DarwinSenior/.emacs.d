@@ -35,14 +35,30 @@
 
 
 (add-hook 'org-mode-hook (lambda ()
-			   (add-hook 'evil-normal-state-entry-hook 'org-preview-all-latex-fragments nil t)
-			   (add-hook 'evil-normal-state-exit-hook 'org-remove-latex-fragment-image-overlays nil t)))
+               (if buffer-file-name
+                   (progn
+                 (add-hook 'evil-normal-state-entry-hook 'org-preview-all-latex-fragments nil t)
+                 (add-hook 'evil-normal-state-exit-hook 'org-remove-latex-fragment-image-overlays nil t)
+                 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
+                 ))))
 
 (add-hook 'org-mode-hook 'evil-org-local-binding)
 (setq org-export-coding-system 'utf-8)
 
 (require-package 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/reveal.js/3.0.0/")
+
+(nmap "SPC C" 'org-capture)
+(setq org-default-notes-file "~/workspace/notes.org")
+; log done states in todo
+(setq org-log-done t)
+(setq org-capture-templates
+      '(
+    ("t" "todo" entry (file+headline  "~/workspace/notes.org" "Tasks")
+     "** TODO %^{Task} %?")
+    ))
+(setq org-agenda-files (list "~/workspace/notes.org"))
+(nmap "SPC c a" 'org-agenda)
 
 (require-package 'calfw)
 (require 'calfw-cal)
@@ -54,8 +70,7 @@
   (cfw:open-calendar-buffer :contents-sources
    (list
     (cfw:org-create-source "green")
-    (cfw:ical-create-source "gcal" "https://calendar.google.com/calendar/ical/i40ej5ffhcqdg6bprs11bist18%40group.calendar.google.com/private-472a2587fa88f4c01b20f543f7e41e00/basic.ics" "IndianRed")))
-  )
+    (cfw:ical-create-source "gcal" "https://calendar.google.com/calendar/ical/i40ej5ffhcqdg6bprs11bist18%40group.calendar.google.com/private-472a2587fa88f4c01b20f543f7e41e00/basic.ics" "IndianRed"))))
 (nmap "SPC g c" 'open-calendar)
 
 (custom-set-faces
