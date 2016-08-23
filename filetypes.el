@@ -52,9 +52,9 @@
 (add-hook 'js2-mode-hook (lambda ()
 			   (tern-mode t)))
 (auto-complete 'js2-mode-hook 'company-tern)
-(auto-format 'html-mode-hook 'web-beautify-html-buffer)
-(auto-format 'css-mode-hook 'web-beautify-css-buffer)
-(auto-format 'js2-mode-hook 'web-beautify-js-buffer)
+(auto-format 'web-mode-hook 'web-beautify-html)
+(auto-format 'css-mode-hook 'web-beautify-css)
+(auto-format 'js2-mode-hook 'web-beautify-js)
 
 (require-package 'company-restclient)
 (require-package 'restclient)
@@ -79,6 +79,12 @@
 (require-package 'cmake-mode)
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
 (add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
+
+(require-package 'tide)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-hook 'typescript-mode-hook 'tide-setup)
+(auto-complete 'typescript-mode-hook 'company-tide)
+(auto-format 'typescript-mode-hook 'tide-format)
 
 (require-package 'haskell-mode)
 (require-package 'hindent)
