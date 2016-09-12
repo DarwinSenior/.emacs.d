@@ -71,7 +71,7 @@
     (goto-char oldpos)))
 
 (defun insert-new-line-above ()
-  "insert a new line below while the retain the cursor position"
+  "Insert a new line below while the retain the cursor position"
   (interactive)
   (let ((oldpos (point)))
     (end-of-line)
@@ -79,7 +79,7 @@
     (goto-char oldpos)))
 
 (defun insert-new-line-below ()
-  "insert a new line below while the retain the cursor position"
+  "Insert a new line below while the retain the cursor position"
   (interactive)
   (let ((oldpos (point)))
     (beginning-of-line)
@@ -87,13 +87,13 @@
     (goto-char oldpos)))
 
 (defun move-line-up ()
-  "move the line above"
+  "Move the line above"
   (interactive)
   (transpose-lines 1)
   (previous-line 2))
 
 (defun move-line-down ()
-  "move the line down"
+  "Move the line down"
   (interactive)
   (next-line 1)
   (transpose-lines 1)
@@ -114,10 +114,10 @@
   "Face used for matched leading chars.")
 
 (fset 'autoformat-action (lambda () (interactive) (message "filetype has not formatting setup yet")))
-
 (nmap "Q" 'call-last-kbd-macro)
 (nmap "J" (lambda () (interactive) (forward-line 5)))
 (nmap "K" (lambda () (interactive) (forward-line -5)))
+(nmap "C-J" 'evil-join)
 (nmap "[ SPC" 'insert-new-line-below)
 (nmap "] SPC" 'insert-new-line-above)
 (nmap "[ e" 'move-line-up)

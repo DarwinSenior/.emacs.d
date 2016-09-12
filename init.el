@@ -38,11 +38,12 @@
 (load-user-file "passive.el")
 (load-user-file "appearance.el")
 (load-user-file "company.el")
+(load-user-file "spell.el")
 (load-user-file "helm.el")
 (load-user-file "filetypes.el")
 (load-user-file "magit.el")
 (load-user-file "orgmode.el")
-(load-user-file "spell.el")
+(load-user-file "org-agenda.el")
 (load-user-file "utilities.el")
 
 
@@ -69,3 +70,34 @@
 
 (require-package 'writeroom-mode)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (fill-column-indicator octave-mode ensime wc-mode org-gcal company-emacs-eclim eclim tide racer emacs-racer flycheck-rust company-racer rust-mode writeroom-mode yasnippet blog-admin calfw ox-reveal ob-ipython exec-path-from-shell org-bullets magit yaml-mode flycheck-stack company-ghc ghc hindent haskell-mode cmake-mode clang-format flycheck-irony company-irony irony company-restclient web-beautify js2-mode company-web emmet-mode web-mode json-mode py-autopep8 company-jedi python-mode vimrc-mode helm-projectile projectile helm flycheck company-quickhelp company-tern company delight nlinum-relative whitespace-cleanup-mode smartparens rainbow-delimiters highlight-numbers golden-ratio evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu el-get color-theme-sanityinc-tomorrow avy auto-package-update airline-themes))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cfw:face-annotation ((t :foreground "#969896" :inherit cfw:face-day-title)))
+ '(cfw:face-day-title ((t :foreground "gray80")))
+ '(cfw:face-default-content ((t :foreground "#c5c8c6")))
+ '(cfw:face-default-day ((t :weight bold :inherit cfw:face-day-title)))
+ '(cfw:face-disable ((t :foreground "#c5c8c6" :inherit cfw:face-day-title)))
+ '(cfw:face-grid ((t :foreground "#373b41")))
+ '(cfw:face-header ((t (:foreground "#de935f" :weight bold))))
+ '(cfw:face-holiday ((t :background "#1d1f21" :foreground "#cc6666" :weight bold)))
+ '(cfw:face-periods ((t :foreground "cyan")))
+ '(cfw:face-saturday ((t :foreground "#f0c674" :weight bold)))
+ '(cfw:face-select ((t :background "#c0c674")))
+ '(cfw:face-sunday ((t :foreground "#f0c674" :weight bold)))
+ '(cfw:face-title ((t (:foreground "#cc666" :weight bold :height 2.0 :inherit variable-pitch))))
+ '(cfw:face-today ((t :background: "#de935f" :weight bold)))
+ '(cfw:face-today-title ((t :background "#7f9f7f" :weight bold)))
+ '(cfw:face-toolbar ((t :foreground "#c5c8c6" :background "#373b41")))
+ '(cfw:face-toolbar-button-off ((t :foreground "#c5c8c6" :background "#373b41")))
+ '(cfw:face-toolbar-button-on ((t :foreground "#c5c8c6" :backgroubd "#373b41" :weight bold))))

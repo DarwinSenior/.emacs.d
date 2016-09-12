@@ -18,9 +18,3 @@
 (with-eval-after-load 'company
                       (define-key company-active-map (kbd "C-w") nil))
 
-(require-package 'flycheck)
-(global-flycheck-mode)
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
-(nmap "[ s" 'flycheck-previous-error)
-(nmap "] s" 'flycheck-next-error)
-

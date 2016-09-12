@@ -39,6 +39,9 @@
 	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-on))))
 
 
+(require-package 'fill-column-indicator)
+(add-hook 'prog-mode-hook 'fci-mode)
+
 (require-package 'delight)
 (delight '((auto-revert-mode nil auto-revert)
 	   (flycheck-mode nil flycheck)
