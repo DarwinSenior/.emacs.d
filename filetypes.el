@@ -59,8 +59,7 @@
 (require-package 'company-restclient)
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.http?\\'" . restclient-mode))
-(add-hook 'restclient-hook (lambda ()
-			     (add-to-list (make-local-variable 'company-backends 'company-restclient))))
+(auto-complete 'restclient-hook 'company-restclient)
 
 (require-package 'irony)
 (require-package 'company-irony)
@@ -79,6 +78,15 @@
 (require-package 'cmake-mode)
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
 (add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
+
+;; (require-package 'eclim)
+;; (require 'eclimd)
+;; (setq eclimd-executable "~/eclipse/eclimd")
+;; (setq eclim-executable "~/eclipse/eclim")
+;; (setq eclimd-default-workspace "~/Desktop/workspace/java/")
+;; (add-hook 'java-mode-hook 'eclim-mode)
+;; (require-package 'company-emacs-eclim)
+;; (auto-complete 'java-mode-hook 'company-emacs-eclim)
 
 (require-package 'tide)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
@@ -112,6 +120,11 @@
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 (auto-complete 'rust-mode-hook 'company-racer)
+
+(require-package 'ensime)
+(require-package 'scala-mode)
+
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
 (provide 'filetypes)
 ;;; filetypes ends here
