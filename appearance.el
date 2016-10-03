@@ -1,6 +1,10 @@
 ;; create a new line
 (require-package 'powerline)
+
 (require-package 'airline-themes)
+(require 'airline-themes)
+(require 'airline-molokai-theme)
+; (load-theme 'airline-light)
 
 ;; theme and all that stuff
 (require-package 'color-theme-sanityinc-tomorrow)
@@ -10,10 +14,6 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-(airline-themes-set-modeline)
-
-(defun airline-get-vc ()
-  "master")
 
 (require-package 'nlinum-relative)
 (add-hook 'prog-mode-hook 'nlinum-relative-mode)

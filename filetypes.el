@@ -35,7 +35,7 @@
 (require-package 'web-mode)
 (require-package 'emmet-mode)
 (require-package 'company-web)
-(require 'company-web-html)
+
 (require-package 'js2-mode)
 (require-package 'web-beautify)
 
