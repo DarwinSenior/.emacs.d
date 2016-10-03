@@ -17,6 +17,7 @@
 
 (require-package 'nlinum-relative)
 (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+(add-hook 'text-mode-hook 'linum-mode)
 (setq nlinum-relative-redisplay-delay 0)      ;; delay
 (setq nlinum-relative-current-symbol "")      ;; or "" for display current line number
 (setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
@@ -39,8 +40,7 @@
 	  (lambda () (when (bound-and-true-p nlinum-relative-mode) (nlinum-relative-on))))
 
 
-(require-package 'fill-column-indicator)
-(add-hook 'prog-mode-hook 'fci-mode)
+;; (add-hook 'prog-mode-hook 'fci-mode)
 
 (require-package 'delight)
 (delight '((auto-revert-mode nil auto-revert)

@@ -35,7 +35,7 @@
 (evil-commentary-mode)
 
 (require-package 'evil-matchit)
-(global-evil-matchit-mode 1)
+;; (global-evil-matchit-mode 1)
 (require-package 'evil-leader)
 (global-evil-leader-mode 1)
 (evil-leader/set-leader " ")

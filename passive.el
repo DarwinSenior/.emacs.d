@@ -3,6 +3,7 @@
 (auto-package-update-maybe)
 
 (setq initial-scratch-message "")
+(setq-default indent-tabs-mode nil)
 
 (require-package 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -34,4 +35,5 @@
 (with-eval-after-load
   'evil
   (require-package 'evil-anzu))
+(require-package 'exec-path-from-shell)
 (exec-path-from-shell-initialize)

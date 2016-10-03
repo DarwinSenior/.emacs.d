@@ -7,6 +7,7 @@
 (helm-autoresize-mode 1)
 (setq helm-autoresize-max-height 30)
 (setq helm-autoresize-min-height 30)
+(setq projectile-svn-command "find . -type f -not -iwholename '*.svn/*' -print0")
 
 (defun save-file ()
   "Save the current buffer when it is actually a buffer"

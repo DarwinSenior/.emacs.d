@@ -37,15 +37,14 @@
 (setq org-export-coding-system 'utf-8)
 (setq org-alphabetical-lists t)
 (setq org-reveal-root "https://cdn.jsdelivr.net/reveal.js/3.0.0/")
-(setq org-latex-listings t)
 (setq org-src-fontify-natively t)
-(setq org-latex-listings 'minted)
 
 (add-hook 'org-mode-hook 'evil-org-local-binding)
 (add-hook 'org-mode-hook (lambda ()
 			   (org-bullets-mode 1)
 			   (require-package 'ox-reveal)
 			   (add-to-list 'org-latex-packages-alist '(""  "minted"))
+			   (setq org-latex-listings 'minted)
 			   (if buffer-file-name
 			       (progn
 				 (nmaplocal "M-l" 'org-toggle-latex-fragment)

@@ -5,6 +5,8 @@
 (require-package 'flyspell)
 (add-hook 'text-mode-hook 'flyspell-mode)
 
+(ispell-change-dictionary "british-ise-w_accents")
+
 (defun flyspell-goto-previous-error (arg)
   "Go to arg previous spelling error."
   (interactive "p")
@@ -43,10 +45,7 @@
 	    (setq arg 0))))))
 (cond
  ((executable-find "hunspell")
-  (setq ispell-program-name "hunspell")
-  (setq ispell-local-dictionary "en_UK")
-  (setq ispell-local-dictionary-alist
-    '(("en_UK" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_UK") nil utf-8)))))
+  (setq ispell-program-name "hunspell")))
 
 (defun my/goto-next-error (arg)
   "Go to next error."

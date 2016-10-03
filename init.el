@@ -53,7 +53,9 @@
 (define-key yas-minor-mode-map (kbd "<C-return>") 'yas-expand)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
-
+(define-key yas-keymap (kbd "TAB") nil)
+(define-key yas-keymap (kbd "<tab>") nil)
+(define-key yas-keymap (kbd "C-k") 'yas-next-field-or-maybe-expand)
 
 ; set up terminal
 (setq system-uses-info nil)
@@ -69,7 +71,6 @@
           (ansi-term "/bin/zsh")))
 
 (require-package 'writeroom-mode)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -77,7 +78,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (fill-column-indicator octave-mode ensime wc-mode org-gcal company-emacs-eclim eclim tide racer emacs-racer flycheck-rust company-racer rust-mode writeroom-mode yasnippet blog-admin calfw ox-reveal ob-ipython exec-path-from-shell org-bullets magit yaml-mode flycheck-stack company-ghc ghc hindent haskell-mode cmake-mode clang-format flycheck-irony company-irony irony company-restclient web-beautify js2-mode company-web emmet-mode web-mode json-mode py-autopep8 company-jedi python-mode vimrc-mode helm-projectile projectile helm flycheck company-quickhelp company-tern company delight nlinum-relative whitespace-cleanup-mode smartparens rainbow-delimiters highlight-numbers golden-ratio evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu el-get color-theme-sanityinc-tomorrow avy auto-package-update airline-themes))))
+    (disable-mouse-mode yaml-mode writeroom-mode whitespace-cleanup-mode web-mode web-beautify wc-mode vimrc-mode tide smartparens rainbow-delimiters racer python-mode py-autopep8 ox-reveal org-gcal org-bullets ob-ipython nlinum-relative magit json-mode js2-mode hindent highlight-numbers helm-projectile golden-ratio flycheck-stack flycheck-rust flycheck-irony exec-path-from-shell evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu ensime emmet-mode el-get delight company-web company-tern company-restclient company-racer company-quickhelp company-jedi company-irony company-ghc company-emacs-eclim color-theme-sanityinc-tomorrow cmake-mode clang-format calfw blog-admin avy auto-package-update airline-themes))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

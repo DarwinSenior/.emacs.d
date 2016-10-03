@@ -123,6 +123,13 @@
 
 (require-package 'ensime)
 (require-package 'scala-mode)
+(add-hook 'scala-mode-hook 'ensime-mode)
+(add-hook 'scala-mode-hook 'ensime)
+(auto-complete 'scala-mode-hook 'ensime-company)
+(auto-format 'scala-mode-hook 'ensime-format-source)
+
+(defvar ensime-startup-snapshot-notification nil)
+(setq ensime-startup-snapshot-notification nil)
 
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
