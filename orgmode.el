@@ -7,7 +7,7 @@
 (require-package 'ob-ipython)
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 
-(setq org-confirm-babel-evaluate nil)
+(setq-default org-confirm-babel-evaluate nil)
 (with-eval-after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -15,17 +15,15 @@
      (python . t)
      (ruby . t))))
 
-(setq org-latex-create-formula-image-program 'imagemagick)
-
 (defun evil-org-local-binding ()
   "keybinding after one get into orgmode"
-  (nmaplocal "RET" 'org-todo) ;; enter will trigger rotate todo state
-  (nmaplocal "SPC o" 'org-open-at-point)
-  (nmaplocal "SPC e" 'org-export-dispatch)
-  (nmaplocal "C-x" 'org-babel-execute-src-block)
-  (nmaplocal "[ l" 'org-previous-link)
-  (nmaplocal "] l" 'org-next-link)
-  (nmaplocal "SPC c" 'org-capture)
+  (nmap :keymaps 'local "RET" 'org-todo) ;; enter will trigger rotate todo state
+  (nmap :keymaps 'local "SPC o" 'org-open-at-point)
+  (nmap :keymaps 'local "SPC e" 'org-export-dispatch)
+  (nmap :keymaps 'local "C-x" 'org-babel-execute-src-block)
+  (nmap :keymaps 'local "[ l" 'org-previous-link)
+  (nmap :keymaps 'local "] l" 'org-next-link)
+  (nmap :keymaps 'local "SPC c" 'org-capture)
   )
 
 
@@ -34,21 +32,21 @@
      (org-toggle-latex-fragment '(16)))
 
 
-(setq org-export-coding-system 'utf-8)
-(setq org-alphabetical-lists t)
-(setq org-reveal-root "https://cdn.jsdelivr.net/reveal.js/3.0.0/")
-(setq org-src-fontify-natively t)
+(setq-default org-export-coding-system 'utf-8)
+(setq-default org-alphabetical-lists t)
+(setq-default org-reveal-root "https://cdn.jsdelivr.net/reveal.js/3.0.0/")
+(setq-default org-src-fontify-natively t)
 
 (add-hook 'org-mode-hook 'evil-org-local-binding)
 (add-hook 'org-mode-hook (lambda ()
 			   (org-bullets-mode 1)
 			   (require-package 'ox-reveal)
-			   (add-to-list 'org-latex-packages-alist '(""  "minted"))
-			   (setq org-latex-listings 'minted)
+			   ;; (add-to-list 'org-latex-packages-alist '(""  "minted"))
+			   ;; (setq org-latex-listings 'minted)
 			   (if buffer-file-name
 			       (progn
-				 (nmaplocal "M-l" 'org-toggle-latex-fragment)
+				 (nmap :keymaps 'local "M-l" 'org-toggle-latex-fragment)
 				 (add-hook 'evil-normal-state-exit-hook 'org-remove-latex-fragment-image-overlays nil t)
-				 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
-				 ))		   (setenv "PDFLATEX" "pdflatex --shell-escape")
-						   ))
+				 ))))
+
+

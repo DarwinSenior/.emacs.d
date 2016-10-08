@@ -35,6 +35,7 @@
   (load-file (expand-file-name file user-init-dir)))
 
 (load-user-file "evil.el")
+;; (load-user-file "evil-remap.el")
 (load-user-file "passive.el")
 (load-user-file "appearance.el")
 (load-user-file "company.el")
@@ -47,15 +48,6 @@
 (load-user-file "utilities.el")
 
 
-(require-package 'yasnippet)
-(yas-global-mode 1)
-;; redefine enter instead of tab for expansion
-(define-key yas-minor-mode-map (kbd "<C-return>") 'yas-expand)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-keymap (kbd "TAB") nil)
-(define-key yas-keymap (kbd "<tab>") nil)
-(define-key yas-keymap (kbd "C-k") 'yas-next-field-or-maybe-expand)
 
 ; set up terminal
 (setq system-uses-info nil)
@@ -67,8 +59,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 (add-hook 'term-mode-hook (lambda () (setq yas-dont-activate t)))
-(nmap "SPC s h" (lambda () (interactive)
-          (ansi-term "/bin/zsh")))
 
 (require-package 'writeroom-mode)
 (custom-set-variables
@@ -81,7 +71,7 @@
     ("962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" default)))
  '(package-selected-packages
    (quote
-    (disable-mouse-mode yaml-mode writeroom-mode whitespace-cleanup-mode web-mode web-beautify wc-mode vimrc-mode tide smartparens rainbow-delimiters racer python-mode py-autopep8 ox-reveal org-gcal org-bullets ob-ipython nlinum-relative magit json-mode js2-mode hindent highlight-numbers helm-projectile golden-ratio flycheck-stack flycheck-rust flycheck-irony exec-path-from-shell evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu ensime emmet-mode el-get delight company-web company-tern company-restclient company-racer company-quickhelp company-jedi company-irony company-ghc company-emacs-eclim color-theme-sanityinc-tomorrow cmake-mode clang-format calfw blog-admin avy auto-package-update airline-themes))))
+    (helm-ag general sentence-navigation evil-indent-plus evil-args disable-mouse-mode yaml-mode writeroom-mode whitespace-cleanup-mode web-mode web-beautify wc-mode vimrc-mode tide smartparens rainbow-delimiters racer python-mode py-autopep8 ox-reveal org-gcal org-bullets ob-ipython nlinum-relative magit json-mode js2-mode hindent highlight-numbers helm-projectile golden-ratio flycheck-stack flycheck-rust flycheck-irony exec-path-from-shell evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu ensime emmet-mode el-get delight company-web company-tern company-restclient company-racer company-quickhelp company-jedi company-irony company-ghc company-emacs-eclim color-theme-sanityinc-tomorrow cmake-mode clang-format calfw blog-admin avy auto-package-update airline-themes))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

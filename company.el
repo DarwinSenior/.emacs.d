@@ -1,9 +1,8 @@
 (require-package 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (load-user-file "company-complete-cycle.el")
-(setq company-idle-delay 0)
-(require-package 'company-tern)
-(setq company-backends
+(setq-default company-idle-delay 0)
+(setq-default company-backends
       '(
 	(company-files
 	company-keywords
@@ -11,22 +10,19 @@
 	company-dabbrev-code
 	company-capf)))
 
-;; this is a work round for fci rendering,
-;; this will temperary turn of the fci when company has options
-;; (defun my/on-off-fci-before-company(command)
-;;   (when (string= "show" command)
-;;     (turn-off-fci-mode))
-;;   (when (string= "hide" command)
-;;     (turn-on-fci-mode)
-;;     (when (bound-and-true-p visual-line-mode)
-;; 	(turn-on-visual-line-mode))))
-;; (advice-add 'company-call-frontends :before #'my/on-off-fci-before-company)
-
-
 (require-package 'company-quickhelp)
 (company-quickhelp-mode 1)
-(setq company-quickhelp-delay 1)
-(setq company-minimum-prefix-length 1)
+(setq-default company-quickhelp-delay 1)
+(setq-default company-minimum-prefix-length 1)
 (with-eval-after-load 'company
                       (define-key company-active-map (kbd "C-w") nil))
 
+(require-package 'yasnippet)
+(yas-global-mode 1)
+;; redefine enter instead of tab for expansion
+(define-key yas-minor-mode-map (kbd "<C-return>") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-keymap (kbd "TAB") nil)
+(define-key yas-keymap (kbd "<tab>") nil)
+(define-key yas-keymap (kbd "C-k") 'yas-next-field-or-maybe-expand)

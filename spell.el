@@ -1,6 +1,8 @@
 (require-package 'flycheck)
 (global-flycheck-mode)
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
+(setq-default flycheck-check-syntax-automatically '(mode-enabled save))
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
 
 (require-package 'flyspell)
 (add-hook 'text-mode-hook 'flyspell-mode)
@@ -43,9 +45,6 @@
 	  (progn
 	    (message "No more miss-spelled word!")
 	    (setq arg 0))))))
-(cond
- ((executable-find "hunspell")
-  (setq ispell-program-name "hunspell")))
 
 (defun my/goto-next-error (arg)
   "Go to next error."
@@ -60,9 +59,8 @@
       (flyspell-goto-previous-error arg)
     (flycheck-previous-error)))
 
-(nmap "[ s" 'my/goto-prev-error)
-(nmap "] s" 'my/goto-next-error)
-(nmap "z =" 'ispell-word)
 
+(nmap "[ s"  'my/goto-prev-error)
+(nmap "] s"  'my/goto-next-error)
+(nmap "z ="  'ispell-word)
 
-;;

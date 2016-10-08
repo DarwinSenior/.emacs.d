@@ -24,7 +24,7 @@
   :type 'boolean
   :group 'dotemacs-evil)
 
-(setq evil-search-module 'evil-search)
+(setq-default evil-search-module 'evil-search)
 
 (evil-mode 1)
 
@@ -33,7 +33,6 @@
 
 (require-package 'evil-commentary)
 (evil-commentary-mode)
-
 (require-package 'evil-matchit)
 ;; (global-evil-matchit-mode 1)
 (require-package 'evil-leader)
@@ -52,18 +51,62 @@
 ;; this should be changed later
 ;; TO-DO
 
-(defun nmap (keybinding action)
-  "adding the default"
-  (define-key evil-normal-state-map (kbd keybinding) action))
-
-(defun nmaplocal (keybinding action)
-  "local mapping"
-  (define-key evil-normal-state-local-map (kbd keybinding) action))
 
 (defun add-hook-local (hook mode action)
-  "bind the hook only for local mode"
+  "Bind the hook only for local mode."
   (add-hook hook
 	    (lambda () (when (bound-and-true-p mode) (action)))))
+
+(require-package 'avy)
+(defface avy-lead-face-0
+  '((t (:foreground "black" :background "white")))
+  "Face used for first non-terminating leading chars.")
+(defface avy-lead-face-1
+  '((t (:foreground "black" :background "white")))
+  "Face used for matched leading chars.")
+(defface avy-lead-face-2
+  '((t (:foreground "black" :background "white")))
+  "Face used for matched leading chars.")
+(defface avy-lead-face
+  '((t (:foreground "black" :background "white")))
+  "Face used for matched leading chars.")
+
+(evil-define-operator evil-operator-send-to-buffer (beg end type)
+  :move-point nil
+  (interactive "<R>")
+  (append-to-buffer (current-buffer) beg end))
+(defun my/send-command (command)
+  (comint-send-string))
+
+(defun my/get-associate-eval-buffer (init-name)
+  (if (null (get-buffer (my/isend-buffer-name)))
+      (term ))
+  (get-buffer (my/isend-buffer-name)))
+
+(defmacro define-and-bind-text-object (key start-regex end-regex)
+  (let ((inner-name (make-symbol "inner-name"))
+        (outer-name (make-symbol "outer-name")))
+    `(progn
+       (evil-define-text-object ,inner-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count nil))
+       (evil-define-text-object ,outer-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count t))
+       (define-key evil-inner-text-objects-map ,key (quote ,inner-name))
+       (define-key evil-outer-text-objects-map ,key (quote ,outer-name)))))
+(define-and-bind-text-object "$" "\\$" "\\$")
+(define-and-bind-text-object "|" "|" "|")
+
+(defun previous-file-buffer ()
+  (interactive)
+  (previous-buffer)
+  (when (not (buffer-file-name))
+      (previous-file-buffer)))
+
+(defun next-file-buffer ()
+  (interactive)
+  (next-buffer)
+  (when (not (buffer-file-name))
+    (next-file-buffer)))
 
 (defmacro retain-pos-do (&rest actions)
   (let ((oldpos (point)))
@@ -90,40 +133,46 @@
   "Move the line above"
   (interactive)
   (transpose-lines 1)
-  (previous-line 2))
+  (forward-line -2))
 
 (defun move-line-down ()
   "Move the line down"
   (interactive)
   (next-line 1)
   (transpose-lines 1)
-  (previous-line 1))
+  (forward-line -1))
 
-(require-package 'avy)
-(defface avy-lead-face-0
-  '((t (:foreground "black" :background "white")))
-  "Face used for first non-terminating leading chars.")
-(defface avy-lead-face-1
-  '((t (:foreground "black" :background "white")))
-  "Face used for matched leading chars.")
-(defface avy-lead-face-2
-  '((t (:foreground "black" :background "white")))
-  "Face used for matched leading chars.")
-(defface avy-lead-face
-  '((t (:foreground "black" :background "white")))
-  "Face used for matched leading chars.")
+(require-package 'general)
+(general-evil-setup t)
 
-(fset 'autoformat-action (lambda () (interactive) (message "filetype has not formatting setup yet")))
+(require-package 'evil-args)
+(require-package 'evil-indent-plus)
+(require-package 'sentence-navigation)
+
+(general-define-key :keymaps 'inner
+                    "a" 'evil-inner-arg
+                    "i" 'evil-indent-plus-i-indent
+                    "I" 'evil-indent-plus-i-indent-up
+                    "s" 'sentence-nav-evil-inner-sentence)
+(general-define-key :keymaps 'outer
+                    "a" 'evil-outer-arg
+                    "i" 'evil-indent-plus-a-indent
+                    "I" 'evil-indent-plus-a-indent-up
+                    "s" 'sentence-nav-evil-outer-sentence)
+
+(nmap "L" 'evil-forward-arg)
+(mmap "H" 'evil-backward-arg)
 (nmap "Q" 'call-last-kbd-macro)
-(nmap "J" (lambda () (interactive) (forward-line 5)))
-(nmap "K" (lambda () (interactive) (forward-line -5)))
+(nvmap "J" (general-simulate-keys "5j"))
+(nvmap "K" (general-simulate-keys "5k"))
+(nmap "C-l" 'evil-ex-nohighlight)
 (nmap "C-J" 'evil-join)
-(nmap "[ SPC" 'insert-new-line-below)
-(nmap "] SPC" 'insert-new-line-above)
 (nmap "[ e" 'move-line-up)
 (nmap "] e" 'move-line-down)
-(nmap "C-l" 'evil-ex-nohighlight)
-(nmap "SPC w" 'avy-goto-word-0)
-(nmap "SPC SPC SPC" 'autoformat-action)
-
+(nmap "[ b" 'next-file-buffer)
+(nmap "] b" 'previous-file-buffer)
+(nmap "[ SPC" 'insert-new-line-below)
+(nmap "] SPC" 'insert-new-line-above)
+(nmap "SPC w c" 'count-words)
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
