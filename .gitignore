@@ -8,5 +8,7 @@ auto-save-list
 /speed-type/
 /.python-environments/
 /.last-package-update-day
+tramp
+eshell
 *~
 .#
