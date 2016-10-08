@@ -53,4 +53,3 @@ On error (read-only), quit without selecting."
 (hmap "ESC" 'helm-keyboard-quit)
 (hmap "TAB" 'helm-next-line)
 (hmap "DEL" 'helm-backspace)
-

@@ -176,3 +176,5 @@
 (nmap "SPC w c" 'count-words)
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
+(require-package 'string-inflection)
+(nmap "U" 'string-inflection-all-cycle)
