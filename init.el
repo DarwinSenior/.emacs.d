@@ -71,7 +71,7 @@
     ("962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" default)))
  '(package-selected-packages
    (quote
-    (string-inflection helm-ag general sentence-navigation evil-indent-plus evil-args disable-mouse-mode yaml-mode writeroom-mode whitespace-cleanup-mode web-mode web-beautify wc-mode vimrc-mode tide smartparens rainbow-delimiters racer python-mode py-autopep8 ox-reveal org-gcal org-bullets ob-ipython nlinum-relative magit json-mode js2-mode hindent highlight-numbers helm-projectile golden-ratio flycheck-stack flycheck-rust flycheck-irony exec-path-from-shell evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu ensime emmet-mode el-get delight company-web company-tern company-restclient company-racer company-quickhelp company-jedi company-irony company-ghc company-emacs-eclim color-theme-sanityinc-tomorrow cmake-mode clang-format calfw blog-admin avy auto-package-update airline-themes))))
+    (tabbar-ruler tabbar string-inflection helm-ag general sentence-navigation evil-indent-plus evil-args disable-mouse-mode yaml-mode writeroom-mode whitespace-cleanup-mode web-mode web-beautify wc-mode vimrc-mode tide smartparens rainbow-delimiters racer python-mode py-autopep8 ox-reveal org-gcal org-bullets ob-ipython nlinum-relative magit json-mode js2-mode hindent highlight-numbers helm-projectile golden-ratio flycheck-stack flycheck-rust flycheck-irony exec-path-from-shell evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu ensime emmet-mode el-get delight company-web company-tern company-restclient company-racer company-quickhelp company-jedi company-irony company-ghc company-emacs-eclim color-theme-sanityinc-tomorrow cmake-mode clang-format calfw blog-admin avy auto-package-update airline-themes))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,4 +94,9 @@
  '(cfw:face-today-title ((t :background "#7f9f7f" :weight bold)))
  '(cfw:face-toolbar ((t :foreground "#c5c8c6" :background "#373b41")))
  '(cfw:face-toolbar-button-off ((t :foreground "#c5c8c6" :background "#373b41")))
- '(cfw:face-toolbar-button-on ((t :foreground "#c5c8c6" :backgroubd "#373b41" :weight bold))))
+ '(cfw:face-toolbar-button-on ((t :foreground "#c5c8c6" :backgroubd "#373b41" :weight bold)))
+ '(tabbar-default ((t (:inherit variable-pitch :background "#141413" :foreground "#aeee00" :family "FantasqueSansMonoNerdFont"))))
+ '(tabbar-modified ((t (:inherit tabbar-default))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#aeee00" :foreground "#141413"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))

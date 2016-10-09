@@ -53,3 +53,14 @@
 	   (undo-tree-mode nil undo-tree)
 	   (golden-ratio-mode nil golden-ratio)
 	   (company-mode nil company)))
+
+(require-package 'tabbar)
+(setf tabbar-background-color (background-color-at-point))
+(setq-default tabbar-home-button (cons (cons "" "") (cons "" "")))
+(setq-default tabbar-buffer-home-button (cons (cons "" "") (cons "" "")))
+(setq-default tabbar-scroll-left-button (cons (cons "" "") (cons "" "")))
+(setq-default tabbar-scroll-right-button (cons (cons "" "") (cons "" "")))
+(setq-default tabbar-separator '(1))
+;; Tabbar settings
+
+(tabbar-mode 1)

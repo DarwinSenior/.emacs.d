@@ -149,17 +149,32 @@
 (require-package 'evil-indent-plus)
 (require-package 'sentence-navigation)
 
-(general-define-key :keymaps 'inner
-                    "a" 'evil-inner-arg
-                    "i" 'evil-indent-plus-i-indent
-                    "I" 'evil-indent-plus-i-indent-up
-                    "s" 'sentence-nav-evil-inner-sentence)
-(general-define-key :keymaps 'outer
-                    "a" 'evil-outer-arg
-                    "i" 'evil-indent-plus-a-indent
-                    "I" 'evil-indent-plus-a-indent-up
-                    "s" 'sentence-nav-evil-outer-sentence)
 
+(general-create-vim-definer general-imap-local 'evil-insert-state-local-map)
+(general-create-vim-definer general-emap-local 'evil-emacs-state-local-map)
+(general-create-vim-definer general-nmap-local 'evil-normal-state-local-map)
+(general-create-vim-definer general-vmap-local 'evil-visual-state-local-map)
+(general-create-vim-definer general-omap-local 'evil-operator-state-local-map)
+(general-create-vim-definer general-mmap-local 'evil-motion-state-local-map)
+(general-create-vim-definer general-rmap-local 'evil-replace-state-local-map)
+(defalias 'imap-local #'general-imap-local)
+(defalias 'emap-local #'general-emap-local)
+(defalias 'nmap-local #'general-nmap-local)
+(defalias 'vmap-local #'general-vmap-local)
+(defalias 'omap-local #'general-omap-local)
+(defalias 'mmap-local #'general-mmap-local)
+(defalias 'rmap-local #'general-rmap-local)
+
+(itomap "a" 'evil-inner-arg)
+(otomap "a" 'evil-outer-arg)
+(itomap "i" 'evil-indent-plus-i-indent)
+(otomap "i" 'evil-indent-plus-a-indent)
+(itomap "I" 'evil-indent-plus-i-indent-up)
+(otomap "I" 'evil-indent-plus-a-indent-up)
+(itomap "s" 'sentence-nav-evil-inner-sentence)
+(otomap "s" 'sentence-nav-evil-outer-sentence)
+
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 (nmap "L" 'evil-forward-arg)
 (mmap "H" 'evil-backward-arg)
 (nmap "Q" 'call-last-kbd-macro)
@@ -174,7 +189,7 @@
 (nmap "[ SPC" 'insert-new-line-below)
 (nmap "] SPC" 'insert-new-line-above)
 (nmap "SPC w c" 'count-words)
-(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+(nmap "SPC e x" 'eval-expression)
 
 (require-package 'string-inflection)
 (nmap "U" 'string-inflection-all-cycle)

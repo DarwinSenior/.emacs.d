@@ -3,11 +3,11 @@
 (defun autoformat-default ()
   (interactive)
   (message "autoformat has not been set yet"))
-(nmap "SPC SPC SPC" (lambda () (interactive) 'autoformat-default))
+(nmap "SPC SPC SPC" 'autoformat-default)
 
 (defun auto-format (mode-hook action)
   (add-hook mode-hook `(lambda ()
-                         (nmap :keymaps 'local "SPC SPC SPC" ',action))))
+                         (nmap-local "SPC SPC SPC" ',action))))
 
 (defun auto-complete (mode-hook backend)
   (add-hook mode-hook
@@ -17,7 +17,7 @@
 (defun auto-doc (mode-hook action)
   (add-hook mode-hook
             `(lambda ()
-               (nmap :keymaps 'local "?" ',action))))
+               (nmap-local "?" ',action))))
 
 ;; python
 (add-to-list 'auto-mode-alist '(".vim\\(rc\\)?$" . vimrc-mode))
@@ -55,7 +55,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(setq web-mode-enable-current-element-highlight t)
+(setq-default web-mode-enable-current-element-highlight t)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))

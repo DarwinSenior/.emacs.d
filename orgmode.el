@@ -17,13 +17,13 @@
 
 (defun evil-org-local-binding ()
   "keybinding after one get into orgmode"
-  (nmap :keymaps 'local "RET" 'org-todo) ;; enter will trigger rotate todo state
-  (nmap :keymaps 'local "SPC o" 'org-open-at-point)
-  (nmap :keymaps 'local "SPC e" 'org-export-dispatch)
-  (nmap :keymaps 'local "C-x" 'org-babel-execute-src-block)
-  (nmap :keymaps 'local "[ l" 'org-previous-link)
-  (nmap :keymaps 'local "] l" 'org-next-link)
-  (nmap :keymaps 'local "SPC c" 'org-capture)
+  (nmap-local "RET" 'org-todo) ;; enter will trigger rotate todo state
+  (nmap-local "SPC o" 'org-open-at-point)
+  (nmap-local "SPC e" 'org-export-dispatch)
+  (nmap-local "C-x" 'org-babel-execute-src-block)
+  (nmap-local "[ l" 'org-previous-link)
+  (nmap-local "] l" 'org-next-link)
+  (nmap-local "SPC c" 'org-capture)
   )
 
 
@@ -45,7 +45,7 @@
 			   ;; (setq org-latex-listings 'minted)
 			   (if buffer-file-name
 			       (progn
-				 (nmap :keymaps 'local "M-l" 'org-toggle-latex-fragment)
+				 (nmap-local "M-l" 'org-toggle-latex-fragment)
 				 (add-hook 'evil-normal-state-exit-hook 'org-remove-latex-fragment-image-overlays nil t)
 				 ))))
 
