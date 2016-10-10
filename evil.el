@@ -95,6 +95,7 @@
        (define-key evil-outer-text-objects-map ,key (quote ,outer-name)))))
 (define-and-bind-text-object "$" "\\$" "\\$")
 (define-and-bind-text-object "|" "|" "|")
+(define-and-bind-text-object "/" "/" "/")
 
 (defun previous-file-buffer ()
   (interactive)
@@ -193,3 +194,5 @@
 
 (require-package 'string-inflection)
 (nmap "U" 'string-inflection-all-cycle)
+
+(require-package 'xah-math-input)
