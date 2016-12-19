@@ -37,3 +37,5 @@
   (require-package 'evil-anzu))
 (require-package 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
+(setenv "PATH" (shell-command-to-string "echo -n $PATH"))
+(setq exec-path (append exec-path '("~/.cargo/bin/")))

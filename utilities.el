@@ -7,6 +7,12 @@
 (setq blog-admin-backend-hexo-config-file "_config.yml") ;; default assumes _config.yml
 (nmap "SPC b l" 'blog-admin-start)
 
+
+(require-package 'gist)
+(nmap "SPC g s" 'gist-list)
+
+(require-package 'writeroom-mode)
+
 (require-package 'calfw)
 (require 'calfw-cal)
 (require 'calfw-org)
@@ -48,6 +54,7 @@
 			    ("jg38igl3i4dgo9uu8crqstes98@group.calendar.google.com" .
 			     "~/workspace/ClassSchedule.org")
 			    ))
+
 
 (provide 'utilities)
 ;;; utilities.el ends here

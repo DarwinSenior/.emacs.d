@@ -64,3 +64,10 @@
 (nmap "] s"  'my/goto-next-error)
 (nmap "z ="  'ispell-word)
 
+(require-package 'xah-math-input)
+(require-package 'fontawesome)
+(add-hook 'text-mode-hook 'xah-math-input-mode)
+(add-hook 'text-mode-hook (lambda ()
+                            (imap "C-f" 'helm-fontawesome)))
+
+

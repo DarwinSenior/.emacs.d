@@ -1,0 +1,6 @@
+# key: table
+# name: table
+# --
+${0: #+caption:} $1
+| $2 |
+|----|

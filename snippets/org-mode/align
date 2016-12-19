@@ -1,0 +1,8 @@
+# key: align
+# name: align
+# --
+\begin{equation*}
+\begin{aligned}
+$0
+\end{aligned}
+\end{equation*}

@@ -1,3 +1,4 @@
+;; this is the settings and beginning of my emacs configuration.
 (setq package-archives
   '(("melpa" . "http://melpa.org/packages/")
     ("org" . "http://orgmode.org/elpa/")
@@ -35,7 +36,6 @@
   (load-file (expand-file-name file user-init-dir)))
 
 (load-user-file "evil.el")
-;; (load-user-file "evil-remap.el")
 (load-user-file "passive.el")
 (load-user-file "appearance.el")
 (load-user-file "company.el")
@@ -71,7 +71,7 @@
     ("962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" default)))
  '(package-selected-packages
    (quote
-    (xah-math-input tabbar-ruler tabbar string-inflection helm-ag general sentence-navigation evil-indent-plus evil-args disable-mouse-mode yaml-mode writeroom-mode whitespace-cleanup-mode web-mode web-beautify wc-mode vimrc-mode tide smartparens rainbow-delimiters racer python-mode py-autopep8 ox-reveal org-gcal org-bullets ob-ipython nlinum-relative magit json-mode js2-mode hindent highlight-numbers helm-projectile golden-ratio flycheck-stack flycheck-rust flycheck-irony exec-path-from-shell evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu ensime emmet-mode el-get delight company-web company-tern company-restclient company-racer company-quickhelp company-jedi company-irony company-ghc company-emacs-eclim color-theme-sanityinc-tomorrow cmake-mode clang-format calfw blog-admin avy auto-package-update airline-themes))))
+    (org-plus-contrib org org-blog evil-paredit paredit-evil paredit elpy ggtags origami dumb-jump dump-jump ng2-mode tidy imenu-anywhere company-php ac-php php-mode company-math gist fontawesome font-awesome xah-math-input tabbar-ruler tabbar string-inflection helm-ag general sentence-navigation evil-indent-plus evil-args disable-mouse-mode yaml-mode writeroom-mode whitespace-cleanup-mode web-mode web-beautify wc-mode vimrc-mode tide smartparens rainbow-delimiters racer python-mode py-autopep8 ox-reveal org-gcal org-bullets ob-ipython nlinum-relative magit json-mode js2-mode hindent highlight-numbers helm-projectile golden-ratio flycheck-stack flycheck-rust flycheck-irony exec-path-from-shell evil-visualstar evil-surround evil-matchit evil-leader evil-extra-operator evil-exchange evil-commentary evil-anzu ensime emmet-mode el-get delight company-web company-tern company-restclient company-racer company-quickhelp company-jedi company-irony company-ghc company-emacs-eclim color-theme-sanityinc-tomorrow cmake-mode clang-format calfw blog-admin avy auto-package-update airline-themes))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

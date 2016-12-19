@@ -6,6 +6,7 @@
 (helm-projectile-on)
 
 (require-package 'helm-ag)
+
 (helm-autoresize-mode 1)
 (setq-default helm-autoresize-max-height 30)
 (setq-default helm-autoresize-min-height 30)
@@ -26,23 +27,13 @@ On error (read-only), quit without selecting."
     (error
      (helm-keyboard-quit))))
 
+(require-package 'imenu-anywhere)
 (nmap "SPC f i" 'helm-projectile)
 (nmap "SPC b i" 'helm-buffers-list)
 (nmap "SPC a i" 'helm-projectile-ag)
 (nmap "SPC p i" 'helm-projectile-switch-project)
-
-; (nmap "SPC f i" ((lambda ()
-;            (interactive)
-;            (save-file)
-;            (helm-projectile))))
-; (nmap "SPC b i" (lambda ()
-;               (interactive)
-;               (save-file)
-;               (helm-buffers-list)))
-; (nmap "SPC a i" ((lambda ()
-;            (interactive)
-;            (save-file)
-;            (helm-projectile-ag))))
+(nmap "SPC l i" 'helm-locate)
+(nmap "SPC m i" 'helm-imenu-anywhere)
 
 (defun hmap (keybinding action)
   "adding key binding for helm"

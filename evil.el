@@ -59,17 +59,18 @@
 
 (require-package 'avy)
 (defface avy-lead-face-0
-  '((t (:foreground "black" :background "white")))
+  '((t (:foreground "IndianRed2" :background "black")))
   "Face used for first non-terminating leading chars.")
 (defface avy-lead-face-1
-  '((t (:foreground "black" :background "white")))
+  '((t (:foreground "IndianRed3" :background "black")))
   "Face used for matched leading chars.")
 (defface avy-lead-face-2
-  '((t (:foreground "black" :background "white")))
+  '((t (:foreground "IndianRed4" :background "black")))
   "Face used for matched leading chars.")
 (defface avy-lead-face
-  '((t (:foreground "black" :background "white")))
+  '((t (:foreground "IndianRed1" :background "black")))
   "Face used for matched leading chars.")
+(setq-default avy-background t)
 
 (evil-define-operator evil-operator-send-to-buffer (beg end type)
   :move-point nil
@@ -103,11 +104,18 @@
   (when (not (buffer-file-name))
       (previous-file-buffer)))
 
-(defun next-file-buffer ()
+(defun next-file-buffer (&optional dst-file-name dst-file-mode)
   (interactive)
+  (let ((start-file-name (or dst-file-name buffer-file-name))
+        (start-file-mode (or dst-file-mode major-mode)))
   (next-buffer)
-  (when (not (buffer-file-name))
-    (next-file-buffer)))
+  (when (not buffer-file-name)
+    (next-file-buffer start-file-name start-file-mode))
+  (when (not (and
+         (equal major-mode start-file-mode)
+         (equal buffer-file-name start-file-name)))
+    (next-file-buffer start-file-name start-file-mode))))
+
 
 (defmacro retain-pos-do (&rest actions)
   (let ((oldpos (point)))
@@ -149,7 +157,8 @@
 (require-package 'evil-args)
 (require-package 'evil-indent-plus)
 (require-package 'sentence-navigation)
-
+(mmap "g(" 'sentence-nav-evil-backward)
+(mmap "g)" 'sentence-nav-evil-forward)
 
 (general-create-vim-definer general-imap-local 'evil-insert-state-local-map)
 (general-create-vim-definer general-emap-local 'evil-emacs-state-local-map)
@@ -189,10 +198,9 @@
 (nmap "] b" 'previous-file-buffer)
 (nmap "[ SPC" 'insert-new-line-below)
 (nmap "] SPC" 'insert-new-line-above)
-(nmap "SPC w c" 'count-words)
+(nmap "SPC w" 'avy-goto-word-0)
+;; (nmap "SPC w c" 'count-words)
 (nmap "SPC e x" 'eval-expression)
 
 (require-package 'string-inflection)
-(nmap "U" 'string-inflection-all-cycle)
-
-(require-package 'xah-math-input)
+(nmap "~" 'string-inflection-all-cycle)

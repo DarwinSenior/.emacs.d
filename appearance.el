@@ -1,3 +1,7 @@
+;; background control
+(add-to-list 'default-frame-alist '(alpha 90 100))
+
+
 ;; create a new line
 (require-package 'powerline)
 
